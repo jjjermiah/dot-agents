@@ -1,0 +1,56 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["references/common-rules.md"],
+  // === Models ===
+  "model": "opencode/kimi-k2.5",
+  "small_model": "opencode/claude-3-5-haiku", // title gen, lightweight tasks
+  "autoupdate": true,
+  // === TUI ===
+  "tui": {
+    "scroll_acceleration": {
+      "enabled": true, // macOS-style momentum scrolling
+    },
+  },
+  "plugin": ["opencode-anthropic-auth@0.0.13"],
+  // === Permissions ===
+  "permission": {
+    // .env reads without prompts
+    "read": {
+      ".env": "allow",
+      ".env.*": "allow",
+      ".env-*": "allow",
+    },
+    "external_directory": "allow",
+    // Only deny the truly catastrophic - everything else just runs
+    "bash": {
+      "sudo *": "deny",
+      "rm -rf /": "deny",
+      "rm -rf /*": "deny",
+      "rm -rf ~": "deny",
+      "rm -rf ~/*": "deny",
+      ":(){:|:&};:": "deny", // fork bomb, just in case
+    },
+  },
+
+  // === MCP Servers ===
+  "mcp": {
+    "next-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "next-devtools-mcp@latest"],
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+    },
+    // Docs lookup for libraries - https://context7.com
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+    },
+    // Web fetching - MCP official server (Python via uvx)
+    "fetch": {
+      "type": "local",
+      "command": ["uvx", "mcp-server-fetch"],
+    },
+  },
+}

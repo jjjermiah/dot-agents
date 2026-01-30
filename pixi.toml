@@ -1,0 +1,11 @@
+[workspace]
+authors = ["Jermiah Joseph <jermiahjoseph98@gmail.com>"]
+channels = ["conda-forge"]
+name = "dot-agents"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+install-opencode = {cmd = "bin/install_opencode.sh", description = "Install OpenCode CLI tool to $HOME/.local/bin"}
+stow = {cmd = "stow --target=$HOME --dotfiles  src -vv", description = "Stow dotfiles to home directory"}
+unstow = {cmd = "stow --target=$HOME --dotfiles --delete src -vv", description = "Unstow dotfiles from home directory"}
