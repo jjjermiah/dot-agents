@@ -31,6 +31,8 @@ Production-grade R code following senior engineer best practices.
 
 ## Skills (Load on Demand)
 
+- **`r-expert`**: Core R programming, package development, tidyverse workflows
 - **`r-rlang-programming`**: Metaprogramming, tidy eval, data-masking APIs
 - **`r-error-handling`**: Custom errors, validation, error chaining
 - **`r-testing`**: testthat 3+, fixtures, snapshots
+- **`r-benchmarking`**: Profiling, performance analysis, microbenchmarks

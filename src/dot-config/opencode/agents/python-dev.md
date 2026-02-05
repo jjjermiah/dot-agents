@@ -28,6 +28,7 @@ Production-grade Python: readable, explicit, testable. Prefer simple, composable
 
 - **`python-production-libs`** (MANDATORY): Consult BEFORE adding dependencies or writing code involving HTTP, logging, CLI, validation, JSON, terminal output, config, async. Load specific references as needed.
 - **`python-testing`**: pytest patterns, fixtures, fakes over mocks
+- **`python-pybytesize`**: Byte size parsing, formatting, human-readable sizes
 
 ## References
 
