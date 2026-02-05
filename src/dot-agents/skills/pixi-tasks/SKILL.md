@@ -26,7 +26,7 @@ setup = "mkdir -p build && cmake -B build"
 
 ## Task Dependencies
 
-Use `depends-on` for execution order:
+**YOU MUST use `depends-on` for execution order.** Tasks without explicit dependencies execute in undefined order and will fail in CI pipelines. No exceptions.
 
 ```toml
 [tasks]
@@ -41,6 +41,8 @@ pixi run start  # Runs: configure → build → start
 ```
 
 ### Diamond Pattern
+
+Every time you have multiple upstream dependencies, use this pattern. Tasks with multiple `depends-on` entries wait for ALL dependencies to complete before executing.
 
 ```toml
 [tasks]
@@ -75,11 +77,13 @@ download = {
 }
 ```
 
-Cache invalidates when:
-- Any input file changes
-- Any output file missing
+**Cache invalidates immediately when ANY of these conditions are met:**
+- Input file changes (hash mismatch)
+- Output file missing
 - Command string changes
 - Environment packages change
+
+**Caches without proper inputs/outputs are always stale.** Define both or accept that your tasks will re-run unnecessarily.
 
 ## Platform-Specific Tasks
 
@@ -124,7 +128,7 @@ check-stow = { cmd = "which stow || (echo 'Install with: brew install stow' && e
 
 ## Cross-Environment Tasks
 
-Run tasks across multiple environments:
+Run tasks across multiple environments. **Always test in all target environments before committing.** Environment-specific failures in CI are expensive and avoidable.
 
 ```toml
 [feature.py311.dependencies]
@@ -230,10 +234,11 @@ ci = { depends-on = ["build"] }
 
 ## Do / Don't
 
-**Do**
-- Use Context7 or pixi docs to confirm task schema and behavior.
-- Keep task graphs simple; use references for complex patterns.
+**YOU MUST:**
+- Verify task schema and behavior against Context7 or official pixi docs before implementing complex workflows
+- Keep task graphs simple; move complex patterns to references
 
-**Don't**
-- Assume parallel execution unless documented.
-- Use undocumented task keys.
+**NEVER:**
+- Assume parallel execution without explicit documentation confirming it
+- Use undocumented task keys in production workflows
+- Skip environment testing before committing dependency changes

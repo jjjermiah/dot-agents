@@ -8,7 +8,7 @@ description: |
 
 ## Purpose
 
-Provide modern best practices for R package testing using testthat 3+. Guide test creation, fixture design, snapshot testing, and BDD-style specifications.
+Provide modern best practices for R package testing using testthat 3+. Guide test creation, fixture design, snapshot testing, and BDD-style specifications. This skill enforces testing discipline—critical practices are non-negotiable.
 
 ## Initial Setup
 
@@ -22,9 +22,10 @@ This creates `tests/testthat/` directory, adds testthat to `DESCRIPTION` Suggest
 
 ## File Organization
 
-**Mirror package structure:**
+**YOU MUST mirror package structure:**
 - Code in `R/foofy.R` → tests in `tests/testthat/test-foofy.R`
-- Use `usethis::use_r("foofy")` and `usethis::use_test("foofy")` to create paired files
+- ALWAYS use `usethis::use_r("foofy")` and `usethis::use_test("foofy")` to create paired files
+- No exceptions—non-matching files cause maintenance failures
 
 **Special files:**
 - `setup-*.R` - Run during `R CMD check` only, not during `load_all()`
@@ -115,7 +116,7 @@ devtools::check()
 
 ### 1. Self-Contained Tests (Cleanup Side Effects)
 
-Use `withr` to manage state changes:
+YOU MUST use `withr` to manage state changes. Tests without withr::local_* = leaked state. Every time.
 
 ```r
 test_that("function respects options", {
@@ -138,10 +139,10 @@ test_that("function respects options", {
 
 ### 2. Plan for Test Failure
 
-Write tests assuming they will fail and need debugging:
-- Tests should run independently in fresh R sessions
-- Avoid hidden dependencies on earlier tests
-- Make test logic explicit and obvious
+YOU MUST write tests assuming they will fail and need debugging:
+- Tests MUST run independently in fresh R sessions
+- NEVER create hidden dependencies between tests—this causes irreproducible failures
+- ALWAYS make test logic explicit and obvious
 
 ### 3. Repetition is Acceptable
 
@@ -150,10 +151,11 @@ Repeat setup code in tests rather than factoring it out. Test clarity is more im
 ### 4. Use `devtools::load_all()` Workflow
 
 During development:
-- Use `devtools::load_all()` instead of `library()`
+- ALWAYS use `devtools::load_all()`—NEVER use `library()` for package under test
 - Makes all functions available (including unexported)
 - Automatically attaches testthat
 - Eliminates need for `library()` calls in tests
+- Using library() on the package under test = stale code. Every time.
 
 ## Snapshot Testing
 
@@ -172,11 +174,15 @@ test_that("error message is helpful", {
 
 Snapshots stored in `tests/testthat/_snaps/`.
 
-**Workflow:**
+**Workflow—YOU MUST complete all steps:**
 ```r
 devtools::test()                    # Creates new snapshots
-testthat::snapshot_review('name')   # Review changes
+
+# IMMEDIATELY after creating snapshots:
+testthat::snapshot_review('name')   # Review changes—never skip this step
 ```
+
+Unreviewed snapshots = undetected regressions. Every time.
 
 ## Test Fixtures and Data
 
@@ -277,7 +283,7 @@ test_that("user creation works", {
 
 ## File System Discipline
 
-**Always write to temp directory:**
+**YOU MUST ALWAYS write to temp directory—no exceptions:**
 
 ```r
 # Good
@@ -288,13 +294,13 @@ write.csv(data, output)
 write.csv(data, "output.csv")
 ```
 
-**Access test fixtures with `test_path()`:**
+**ALWAYS access test fixtures with `test_path()`—relative paths break in CI:**
 
 ```r
-# Good - works in all contexts
+# Good—ALWAYS use test_path()
 data <- readRDS(test_path("fixtures", "data.rds"))
 
-# Bad - relative paths break
+# Bad—relative paths cause CI failures. Every time.
 data <- readRDS("fixtures/data.rds")
 ```
 

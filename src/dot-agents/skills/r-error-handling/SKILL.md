@@ -12,7 +12,9 @@ Production-grade error handling and custom condition classes in R. Guide structu
 
 ## Core Philosophy
 
-**Fail fast, fail informatively**:
+**We follow one principle: Fail fast, fail informatively.**
+
+Every error handling implementation MUST:
 1. Guide users to solutions with clear messages
 2. Preserve debugging context with backtraces
 3. Support selective handling via custom classes
@@ -167,15 +169,17 @@ rlang::abort(c(
 | Error recovery | `try_fetch()` | Better than tryCatch |
 | Stack inspection | `try_fetch()` or `withCallingHandlers()` | Both preserve stack |
 
-## Anti-Patterns
+## Anti-Patterns (NEVER Do These)
 
-**Don't:**
-- Swallow errors silently: `tryCatch(x, error = function(e) NULL)`
-- Use generic error classes: `abort("Error")`
-- Forget `call` argument: `abort_mypackage("Error")` # Shows wrong function
-- Discard low-level errors: Rethrow without `parent`
+These patterns ALWAYS cause failures in production. No exceptions.
 
-**Do:**
+**NEVER:**
+- Swallow errors silently: `tryCatch(x, error = function(e) NULL)` — debugging becomes impossible
+- Use generic error classes: `abort("Error")` — breaks selective handling
+- Forget `call` argument: `abort_mypackage("Error")` — shows wrong function in traceback, every time
+- Discard low-level errors: Rethrow without `parent` — loses critical context
+
+**ALWAYS:**
 - Log before recovering: `log_error(cnd); return(fallback)`
 - Use specific classes: `class = "mypackage_specific_error"`
 - Pass call context: `call = caller_env()`
@@ -207,17 +211,20 @@ testthat::test_that("error has correct fields", {
 })
 ```
 
-## Output Contract
+## Output Contract (You MUST Comply)
 
-When using this skill, ensure:
-- All errors use `rlang::abort()` with custom classes (never `library(rlang)`)
-- All helpers accept `call = rlang::caller_env()`
-- Error messages use bulleted formatting
-- Low-level errors chained to high-level
-- All rlang functions explicitly namespaced
+Before finishing any task with this skill, verify ALL of the following:
+
+- [ ] All errors use `rlang::abort()` with custom classes (never `library(rlang)`)
+- [ ] All helpers accept `call = rlang::caller_env()`
+- [ ] Error messages use bulleted formatting
+- [ ] Low-level errors chained to high-level with `parent = cnd`
+- [ ] All rlang functions explicitly namespaced
+
+**Checking these items is required. Skipped verification = broken error handling in production.**
 
 ## References (Load on Demand)
 
-- **[references/base-r-details.md](references/base-r-details.md)** - tryCatch vs withCallingHandlers, restarts, stack traces
-- **[references/rlang-advanced.md](references/rlang-advanced.md)** - Complex chains, custom constructors, lazy messages
-- **[references/testing-patterns.md](references/testing-patterns.md)** - Testing error conditions, snapshot testing
+- **[references/base-r-details.md](references/base-r-details.md)** - Load when working with base R handlers (tryCatch, withCallingHandlers), restarts, or stack traces
+- **[references/rlang-advanced.md](references/rlang-advanced.md)** - Load when implementing complex error chains, custom condition constructors, or lazy error messages
+- **[references/testing-patterns.md](references/testing-patterns.md)** - Load when writing or reviewing tests for error conditions

@@ -10,11 +10,13 @@ description: |
 
 Provide production-grade rlang metaprogramming guidance for R packages and functions that manipulate code, names, environments, conditions, or evaluation.
 
+**Before proceeding:** Announce which rlang concepts you're using: "I'm using rlang for [tidy eval / error handling / code construction / environments]". This maintains clarity as we work through metaprogramming together.
+
 ## Core Concepts
 
 ### 1. Defusal and Injection
 
-Code is data. Defuse (capture) it, manipulate it, inject (insert) it elsewhere:
+Code is data. Defuse (capture) it, manipulate it, inject (insert) it elsewhere. **You MUST understand defusal before using tidy eval**: every {{ !! !!! operation depends on it.
 
 ```r
 # Defuse user argument
@@ -172,6 +174,8 @@ my_function <- function(method = c("fast", "accurate"), ...) {
 
 ### Wrapping Data-Masking Functions
 
+**Always use embracing ({{) when wrapping dplyr/ggplot2 functions. No exceptions.**
+
 ```r
 # Single variable
 my_filter <- function(data, condition) {
@@ -190,6 +194,8 @@ summarise_var <- function(data, var) {
 ```
 
 ### Error Helpers
+
+**You MUST include `call = caller_env()` in every error helper. Errors showing the helper instead of the user's function = failed user experience. Every time.**
 
 ```r
 # Standard pattern for all validation functions
@@ -391,13 +397,13 @@ test_that("error has correct class", {
 
 ## Key Principles
 
-1. **Embrace for functions** - Use `{{` when wrapping data-masking functions
-2. **Caller context for errors** - Always `call = caller_env()` in helpers
-3. **Classes for conditions** - All package errors should have classes
-4. **Quosures for hygiene** - Preserve environment context with `enquo()`
-5. **Test thoroughly** - Tidy eval and metaprogramming have subtle edge cases
-6. **Document NSE** - Make clear when arguments use defusal/injection
-7. **Fail informatively** - Structured errors help users fix problems
+1. **Embrace for functions** - Use `{{` when wrapping data-masking functions. Always. No exceptions.
+2. **Caller context for errors** - `call = caller_env()` is mandatory in every helper. Errors must show the user's call, never the helper's.
+3. **Classes for conditions** - All package errors must have classes. Never use bare `stop()` in production code.
+4. **Quosures for hygiene** - Preserve environment context with `enquo()`. Defusals without environments fail in complex pipelines.
+5. **Test thoroughly** - Tidy eval and metaprogramming have subtle edge cases. Test with bare names, expressions, and programmatic construction.
+6. **Document NSE** - Make clear when arguments use defusal/injection. Users cannot guess which arguments are data-masked.
+7. **Fail informatively** - Structured errors help users fix problems. Bullet lists in `abort()` are required, not optional.
 
 ## Quick Reference
 

@@ -12,7 +12,7 @@ Complete reference for pixi - the modern cross-platform package manager unifying
 
 ## Core Concepts
 
-Pixi treats your project folder as a **workspace** with three key artifacts:
+When we work with pixi, we treat the project folder as a **workspace** with three key artifacts:
 
 | Artifact | Purpose | Git |
 |----------|---------|-----|
@@ -113,7 +113,7 @@ test = "pytest"
 
 ## Lock File Management
 
-**Always commit `pixi.lock`** for reproducibility.
+**YOU MUST always commit `pixi.lock`** for reproducibility. Every project without a committed lock file eventually encounters version conflicts and broken builds.
 
 ```bash
 pixi install              # Updates lock if manifest changed
@@ -124,7 +124,7 @@ pixi update               # Update dependencies and regenerate lock
 
 ## Multi-Environment Composition
 
-Define multiple environments using **features** and **solve groups**.
+We define multiple environments using **features** and **solve groups** for reliable environment composition.
 
 ### Basic Pattern
 
@@ -363,14 +363,14 @@ Load these references when needed:
 ## Do / Don't
 
 **Do**
-- Commit `pixi.lock` for reproducibility.
-- Use `pixi run` over manual activation in scripts and CI.
-- Use solve groups for consistent versions across environments.
+- **YOU MUST commit `pixi.lock`** for reproducibility. Lock files not in version control = broken reproducibility. Every time.
+- **Always use `pixi run`** over manual activation in scripts and CI. Scripts with manual activation fail in other environments without warning.
+- **Always use solve groups** when defining multiple environments. Environments without solve groups inevitably diverge and create "works on my machine" bugs.
 - Use Context7 or official pixi docs for exact syntax.
 - Keep root workspace manifests minimal; details in member packages.
 
 **Don't**
-- Edit `pixi.lock` by hand.
+- **Never edit `pixi.lock` by hand**. Manual edits corrupt the lock and cause solver failures that waste hours to debug.
 - Assume undocumented options exist (check docs first).
 - Forget to update lock file after changing dependencies.
 - Mix conda-forge and PyPI dependencies without considering compatibility.

@@ -8,7 +8,7 @@ description: |
 
 ## Purpose
 
-Pytest-first testing emphasizing **fakes over mocks** and behavior-driven assertions.
+Pytest-first testing emphasizing **fakes over mocks** and behavior-driven assertions. This skill applies to all Python testing work—always follow its guidance.
 
 ## Core Philosophy
 
@@ -38,8 +38,10 @@ See `references/test-layers.md` for layer distribution and decision tree.
 
 ### Prefer Fakes Over Mocks
 
+**YOU MUST use fakes for business logic tests. Never use mocks when testing behavior—mocks couple tests to implementation and break on every refactor.**
+
 ```python
-# GOOD: Fake tests behavior
+# CORRECT: Fake tests behavior (use this approach)
 def test_user_creation():
     fake_db = FakeDatabaseAdapter()
     service = UserService(database=fake_db)
@@ -47,7 +49,7 @@ def test_user_creation():
     assert user.id == 1
     assert "INSERT" in fake_db.executed_queries[0]
 
-# AVOID: Mock couples to implementation
+# WRONG: Mock couples to implementation—this pattern causes test breakage every time you refactor
 def test_user_creation(mocker):
     mock_db = mocker.patch("myapp.service.database")
     # Breaks on refactor
@@ -73,19 +75,19 @@ def capture_emails(monkeypatch):
     return sent
 ```
 
-## DO
+## YOU MUST
 
-- Test behavior, not implementation
-- Use fakes for business logic
-- Descriptive names: `test_<what>_<condition>_<expected>`
-- Use `tmp_path` for file operations
+- Test behavior, not implementation—tests that verify implementation details are technical debt
+- Use fakes for business logic (mocks without fakes = brittle tests that fail on refactoring)
+- Name tests descriptively: `test_<what>_<condition>_<expected>`
+- Use `tmp_path` for all file operations in tests—never hardcode paths
 
-## DON'T
+## NEVER
 
-- Use subprocess in unit tests (use CliRunner)
-- Hardcode paths
-- Test private methods directly
-- Use `time.sleep()` in unit tests
+- Use subprocess in unit tests—always use CliRunner from click.testing
+- Hardcode paths in tests
+- Test private methods directly (test public API behavior instead)
+- Use `time.sleep()` in unit tests (use monkeypatch or freezegun)
 
 ## References (Load on Demand)
 

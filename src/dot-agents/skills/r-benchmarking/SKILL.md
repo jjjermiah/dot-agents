@@ -8,7 +8,7 @@ description: |
 
 ## Purpose
 
-Produce production-grade R benchmarking guidance and code with reproducibility and measurement rigor. Select the right tool (base timing vs microbench vs profiling) and explain why.
+Produce production-grade R benchmarking guidance and code with reproducibility and measurement rigor. We're building measurements we can trust—selecting the right tool (base timing vs microbench vs profiling) and explaining why this choice matters.
 
 ## References (Load on Demand)
 
@@ -33,24 +33,28 @@ Produce production-grade R benchmarking guidance and code with reproducibility a
 
 ## Workflow
 
-1. Clarify goal (macro timing vs microbench vs profiling). Infer from context if not explicit; state assumption.
-2. Apply reproducibility rules (inputs, seed, environment details, warmup where relevant).
+**BEFORE PROCEEDING**, clarify your goal. This determines everything that follows.
+
+1. **Announce your goal** (macro timing vs microbench vs profiling). Infer from context if not explicit; state your assumption explicitly.
+2. **Immediately apply** reproducibility rules (inputs, seed, environment details, warmup). Measurement without reproducibility is noise.
 3. Provide minimal, correct code snippet with the right tool and key parameters.
 4. Explain how to interpret outputs (time, itr/sec, mem_alloc, gc/sec, by.self/by.total).
 5. Call out pitfalls (I/O, GC, elapsed vs CPU, too-short sampling intervals).
 
 ## Output Contract
 
-Always provide:
-- Tool choice and rationale
-- R code snippet with key parameters
-- Notes on interpretation and pitfalls
+**You MUST provide all of the following without exception:**
 
-For profiling: include how to summarize and visualize results.
-For microbenchmarks: include guidance on iterations, GC filtering, and result equivalence checks.
+- Tool choice and rationale—explain why this tool, why now
+- R code snippet with key parameters configured correctly
+- Notes on interpretation and pitfalls—what will mislead you
+
+**For profiling:** include how to summarize and visualize results. Missing this wastes the profiling effort.
+
+**For microbenchmarks:** include guidance on iterations, GC filtering, and result equivalence checks. Ignoring GC effects produces misleading rankings.
 
 ## Quality Standards
 
-- Prefer `bench::mark()` for microbenchmarks unless user requires legacy tools
-- Never recommend single-run timings for comparisons
-- Only reference APIs documented in references
+- **YOU MUST** use `bench::mark()` for microbenchmarks unless user explicitly requires legacy tools
+- **NEVER** recommend single-run timings for comparisons—this produces garbage results without exception
+- **ALWAYS** cite reference documentation directly—guessing APIs leads to silent failures

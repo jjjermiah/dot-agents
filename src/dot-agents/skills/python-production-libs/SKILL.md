@@ -12,11 +12,16 @@ Canonical library choices for production Python. Third-party when stdlib is pain
 
 ## CRITICAL: Use Context7 for Implementation
 
-**DO NOT rely on pre-trained knowledge for these libraries.** APIs change frequently.
+**YOU MUST NOT rely on pre-trained knowledge for these libraries.** APIs change frequently, and stale knowledge causes bugs. No exceptions.
 
-1. Load the appropriate reference from this skill to get the Context7 library slug
-2. Use `mcp_context7_query-docs` with the slug and suggested queries
-3. Write code based on Context7 results, NOT memory
+**IMMEDIATELY upon loading this skill:**
+
+1. Announce: "Using python-production-libs - will query Context7 for all library implementations"
+2. Load the appropriate reference from this skill to get the Context7 library slug
+3. Query Context7 with the suggested queries BEFORE writing any code
+4. Write code based on Context7 results, NOT memory
+
+**Library without Context7 query = implementation based on stale knowledge. Every time.**
 
 Example workflow:
 ```
@@ -28,7 +33,7 @@ Example workflow:
 
 ## Core Principle
 
-**Stdlib is often outdated or painful** (`urllib`, `argparse`, `unittest`, `logging` for structured output). Modern third-party libs are production-standard and worth the dependency.
+**Stdlib is often outdated or painful** (`urllib`, `argparse`, `unittest`, `logging` for structured output). Our recommendations reflect modern Python production standards—third-party libs that have become the de facto standard.
 
 ## Quick Reference
 
@@ -46,7 +51,7 @@ Example workflow:
 | Testing | `pytest` | `unittest` |
 | Async | `anyio` | `asyncio` (for library code) |
 
-## When to Load References
+## References (Load as Needed)
 
 Load the appropriate reference when working in that domain:
 
@@ -86,18 +91,19 @@ dev = [
 ]
 ```
 
-## DO
+## YOU MUST
 
-- **Query Context7 BEFORE writing code** - Each reference has the library slug and suggested queries
+- **Query Context7 BEFORE writing any implementation code** - Each reference has the library slug and suggested queries
+- **Announce which library you're choosing and why** when making recommendations
 - Check this skill before adding new dependencies
 - Use type hints with all these libraries
 - Prefer async variants when available
 - Pin major versions in production
 
-## DON'T
+## NEVER
 
-- **Rely on pre-trained knowledge** - Library APIs change; always fetch fresh docs
-- Use `requests` (use `httpx` - same API, async support)
-- Use `argparse` for new CLIs (use `typer`)
-- Use stdlib `logging` for JSON output (use `structlog`)
-- Use `json` for high-throughput (use `orjson`)
+- **Rely on pre-trained knowledge** - Library APIs change; stale knowledge causes bugs
+- Use `requests` (use `httpx` - same API, async support, modern standard)
+- Use `argparse` for new CLIs (use `typer` - industry standard)
+- Use stdlib `logging` for JSON output (use `structlog` - required for structured logging)
+- Use `json` for high-throughput (use `orjson` - 10x faster)

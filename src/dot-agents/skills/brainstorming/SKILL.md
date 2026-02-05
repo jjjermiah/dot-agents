@@ -12,7 +12,7 @@ Guide users through structured ideation and creative problem-solving. Detects st
 
 ## Entry: Where Are You Starting?
 
-Ask the user to identify their starting point:
+BEFORE PROCEEDING, require the user to explicitly choose their starting point:
 
 | Starting Point | Description                                          | Next Step                                         |
 |----------------|------------------------------------------------------|---------------------------------------------------|
@@ -20,20 +20,22 @@ Ask the user to identify their starting point:
 | **Seed**       | Have an idea but need to expand it                   | → [Expand Mode](#expand-mode)                     |
 | **Open**       | Need to generate many options from scratch           | → [Diverge-Converge Mode](#diverge-converge-mode) |
 
+YOU MUST get explicit confirmation: "Which starting point describes you: Stuck, Seed, or Open?" No proceeding until selected.
+
 ## Escape Mode: Breaking Convergent Thinking
 
 When ideas cluster around the same approaches.
 
 ### Step 1: Detect Convergence Blindness
 
-Check if the user is stuck in one of these states (see [references/convergence-states.md]):
+YOU MUST check if we're stuck in one of these states (see [references/convergence-states.md]):
 
 - **B1 First-Attractors**: First ideas feel "right" immediately
 - **B2 Function-Lock**: Discussion assumes a solution type ("We need an app...")
 - **B3 Axis-Collapse**: Ideas differ cosmetically but share structure
 - **B4 Domain-Prison**: All ideas come from same reference class
 
-Ask diagnostic questions from the reference. If any state matches, apply the corresponding intervention.
+Ask diagnostic questions from the reference. If any state matches, IMMEDIATELY apply the corresponding intervention. Never skip this step—convergence blindness kills creativity every time.
 
 ### Step 2: Function Extraction
 
@@ -115,9 +117,11 @@ Select top 3-5 ideas:
 3. Rank by score
 4. Document tradeoffs: why chosen, what deprioritized
 
-## Anti-Patterns: Avoid These
+YOU MUST get explicit selection: "Which ideas are we moving forward with?" Confirm choices before proceeding.
 
-Throughout all modes, guard against:
+## Anti-Patterns: NEVER Use These
+
+Throughout all modes, we guard against these failure patterns:
 
 | Pattern                  | Problem                                | Fix                                                     |
 |--------------------------|----------------------------------------|---------------------------------------------------------|
@@ -127,21 +131,23 @@ Throughout all modes, guard against:
 | **Inversion Trap**       | "Do the opposite" (still same axis)    | Find orthogonal axis, not negative of same              |
 | **Novelty Chase**        | Weird but doesn't solve problem        | Return to function: does this serve required function?  |
 
+**Premature evaluation without generation first = guaranteed mediocre results. Every time.**
+
 ## Collaborative Design Mode: Validation
 
 When you have a direction and need to refine it through dialogue.
 
 ### Understanding Phase
 
-- Check project context first (files, docs)
+- Check our project context first (files, docs)
 - Ask ONE question at a time (prefer multiple choice)
 - Focus: purpose, constraints, success criteria
 
 ### Exploration Phase
 
 - Present 2-3 approaches with trade-offs
-- Lead with recommendation and reasoning
-- Get explicit selection before proceeding
+- Lead with our recommendation and reasoning
+- YOU MUST get explicit selection: "Which approach should we pursue?" before proceeding
 
 ### Design Phase
 

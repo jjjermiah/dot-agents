@@ -8,27 +8,39 @@ description: |
 
 ## Purpose
 
-Provide production-grade R code, package development guidance, and data science workflows. Leverage Context7 for up-to-date package documentation and modern R best practices.
+YOU MUST apply this skill for ALL R code, package development, and data science workflows. This skill provides production-grade R guidance and enforces modern best practices. No exceptions.
 
-## Complementary Skills
+IMMEDIATELY use Context7 for package-specific APIs—outdated documentation causes bugs. Every time.
 
-Load additional skills when needed, in combination with r-expert:
+## Complementary Skills (Required Announcement)
+
+When loading any complementary skill, YOU MUST announce: "Loading [skill-name] with r-expert"
+
+Load these additional skills IN COMBINATION with r-expert when applicable:
 
 - **r-testing** - When writing/fixing/reviewing R tests and test fixtures
 - **r-benchmarking** - When measuring performance, timing, profiling, or memory allocation
 - **r-error-handling** - When implementing structured error handling and custom conditions
 - **r-rlang-programming** - When using metaprogramming, NSE, tidy evaluation, or rlang APIs
 
+NEVER skip complementary skills when the task requires them. Skipping specialized guidance = substandard results. Every time.
+
 ## Core Workflow
 
-1. Identify the task type (data manipulation, visualization, package dev, etc.)
-2. Use Context7 for package-specific APIs (see [references/r-context7-mappings.md](references/r-context7-mappings.md))
-3. Apply modern tidyverse patterns
-4. Ensure reproducibility and best practices
+FOLLOW THIS SEQUENCE. No deviations.
 
-## Package Documentation
+1. **Identify task type** (data manipulation, visualization, package dev, etc.)
+2. **ALWAYS use Context7 FIRST** for package-specific APIs—see [references/r-context7-mappings.md](references/r-context7-mappings.md). Code written without Context7 verification = unreliable.
+3. **Apply tidyverse patterns** as the default approach
+4. **Verify reproducibility** before delivering results
 
-Use Context7 to get accurate, current documentation for R packages:
+Package documentation without Context7 verification = stale information. Every time.
+
+## Package Documentation (ALWAYS USE Context7)
+
+YOU MUST use Context7 for ALL package-specific documentation. Hard-coded knowledge becomes outdated. No exceptions.
+
+Standard library IDs:
 
 ```
 # Tidyverse core
@@ -43,16 +55,22 @@ Use Context7 to get accurate, current documentation for R packages:
 /r-lib/usethis          # Project setup
 /r-lib/testthat         # Testing
 
-# See full list in references/r-context7-mappings.md
+# ALWAYS check references/r-context7-mappings.md for the complete list
 ```
 
-## Code Style
+R code written without Context7 lookup = latent bugs. Every production R workflow uses Context7 verification.
 
-- Use `package::function()` for clarity
-- Prefer tidyverse for data manipulation
-- Snake_case for functions and variables
-- Explicit returns only when early exit needed
-- 80-100 character line limits
+## Code Style (Non-Negotiable)
+
+YOU MUST follow these standards. No exceptions.
+
+- **ALWAYS use** `package::function()` for clarity—implicit imports cause namespace conflicts
+- **ALWAYS default to tidyverse** for data manipulation—base R without good reason = technical debt
+- **ALWAYS use snake_case** for functions and variables
+- **NEVER use explicit returns** unless early exit required
+- **ALWAYS keep lines** within 80-100 characters
+
+Code deviating from these standards = rework required. Every time.
 
 ## Essential Patterns
 
@@ -99,4 +117,6 @@ my-package/
 
 ## References (Load on Demand)
 
-- **[references/r-context7-mappings.md](references/r-context7-mappings.md)** - Load when querying Context7 for R package documentation; contains library ID mappings for tidyverse, Shiny, testing, ML, and database packages
+- **[references/r-context7-mappings.md](references/r-context7-mappings.md)** - YOU MUST load this BEFORE querying Context7 for R packages. Contains verified library ID mappings for tidyverse, Shiny, testing, ML, and database packages.
+
+Context7 queries without the mappings reference = incorrect library IDs. Always check the reference first.

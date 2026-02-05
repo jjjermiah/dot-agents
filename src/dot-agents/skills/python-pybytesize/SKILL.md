@@ -8,7 +8,15 @@ description: |
 
 ## Purpose
 
-Use pybytesize (imported as `bytesize`) to parse and manipulate byte sizes with consistent unit conversions and formatting. Provide concise, accurate examples that show how ByteSize objects behave with metric vs binary units.
+Use pybytesize (imported as `bytesize`) to parse and manipulate byte sizes with consistent unit conversions and formatting. We provide concise, accurate examples that show how ByteSize objects behave with metric vs binary units.
+
+## Key Requirements
+
+**ALWAYS distinguish metric vs binary units explicitly.** Mixing MB (1000) with MiB (1024) causes silent errors. No exceptions.
+
+**YOU MUST catch specific exceptions** (`UnrecognizedSizeStringError`, `UnknownUnitError`, `NegativeByteSizeError`) when parsing user input. Generic `ByteSizeError` catches everything—but specific exceptions give better UX. Every time.
+
+**When doing block-aligned calculations, verify `block_bytes > 0` first.** `apparent_size()` raises `ValueError` on invalid input. Always.
 
 ## Quick start
 
@@ -115,6 +123,8 @@ except ByteSizeError as e:
 ```
 
 ## Non-obvious details
+
+**String parsing without validation = runtime failures. Every time.** Always wrap parsing in try/except blocks for user input.
 
 - String parsing accepts whitespace and underscores (e.g., "   1024B   ", "1_073_741_824MB").
 - `print(ByteSize(...))` defaults to a best-fit binary unit (base 1024).
