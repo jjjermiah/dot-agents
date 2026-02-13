@@ -1,7 +1,6 @@
 ---
 name: pixi-tasks
-description: |
-  Complex pixi task workflows and orchestration. Use when building task dependency chains, configuring caching with inputs/outputs, creating parameterized tasks, or setting up CI pipelines—e.g., "pixi task depends-on", "task caching for build automation", "multi-environment test matrices".
+description: Complex pixi task workflows and orchestration. Use when building task dependency chains, configuring caching with inputs/outputs, creating parameterized tasks, or setting up CI pipelines—e.g., "pixi task depends-on", "task caching for build automation", "multi-environment test matrices".
 ---
 
 # Pixi Tasks

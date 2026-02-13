@@ -1,7 +1,6 @@
 ---
 name: r-testing
-description: |
-  R package testing with testthat 3rd edition. Use when writing R tests, fixing failing tests, debugging errors, or reviewing coverage—e.g., "write testthat tests", "fix failing R tests", "snapshot testing", "test coverage".
+description: R package testing with testthat 3rd edition. Use when writing R tests, fixing failing tests, debugging errors, or reviewing coverage—e.g., "write testthat tests", "fix failing R tests", "snapshot testing", "test coverage".
 ---
 
 # R Testing Skill

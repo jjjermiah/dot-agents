@@ -1,7 +1,6 @@
 ---
 name: script-writer
-description: |
-  Write production-ready one-off scripts and automation utilities with proper error handling and safety patterns. Use when developing bash automation, Python CLI tools, shell scripts, system administration scripts, or command-line batch processing—e.g., "write a script to process files", "python one-liner for data conversion", "bash automation for backups", "shell script with error handling".
+description: Write production-ready one-off scripts and automation utilities with proper error handling and safety patterns. Use when developing bash automation, Python CLI tools, shell scripts, system administration scripts, or command-line batch processing—e.g., "write a script to process files", "python one-liner for data conversion", "bash automation for backups", "shell script with error handling".
 ---
 
 # Script Writer Skill

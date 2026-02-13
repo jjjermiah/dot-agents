@@ -1,7 +1,6 @@
 ---
 name: azuredevops-pipelines-logging
-description: |
-  Azure DevOps Pipelines logging-command guidance for reliable script-to-agent signaling, variable passing, and log UX. Use when writing or debugging `##vso[...]` and `##[...]` commands in YAML/Bash/PowerShell pipelines, troubleshooting output variable scope, handling secrets and masking behavior, or publishing summaries/artifacts from scripts. Pair with `azuredevops-pipelines-template` when template architecture and logging semantics are both in scope.
+description: Azure DevOps Pipelines logging-command guidance for reliable script-to-agent signaling, variable passing, and log UX. Use when writing or debugging `##vso[...]` and `##[...]` commands in YAML/Bash/PowerShell pipelines, troubleshooting output variable scope, handling secrets and masking behavior, or publishing summaries/artifacts from scripts. Pair with `azuredevops-pipelines-template` when template architecture and logging semantics are both in scope.
 ---
 
 # Azure DevOps Logging

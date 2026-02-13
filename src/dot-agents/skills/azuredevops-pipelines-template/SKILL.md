@@ -1,7 +1,6 @@
 ---
 name: azuredevops-pipelines-template
-description: |
-  Azure DevOps Repos-first template architecture for reusable CI pipelines. Use when designing or debugging Azure Pipelines YAML templates, splitting PR validation from post-merge main workflows while reusing one core CI template, enforcing strict compile-time/runtime variable rules, building typed template APIs (`stepList`, `jobList`, `stageList`, `templateContext`), or creating self-contained dependency-management templates for TypeScript/Python/R using bun, npm, and pixi—e.g., "one CI template for PR and main", "fix expression timing bug", "design jobList template contract".
+description: Azure DevOps Repos-first template architecture for reusable CI pipelines. Use when designing or debugging Azure Pipelines YAML templates, splitting PR validation from post-merge main workflows while reusing one core CI template, enforcing strict compile-time/runtime variable rules, building typed template APIs (`stepList`, `jobList`, `stageList`, `templateContext`), or creating self-contained dependency-management templates for TypeScript/Python/R using bun, npm, and pixi—e.g., "one CI template for PR and main", "fix expression timing bug", "design jobList template contract".
 ---
 
 # Azure DevOps Pipelines Template

@@ -1,7 +1,6 @@
 ---
 name: r-error-handling
-description: |
-  Base R error handling with tryCatch, withCallingHandlers, and custom condition classes. Use when implementing error recovery, debugging conditions, or working with stop/warning/message—e.g., "tryCatch in R", "custom condition class", "handle warnings and errors", "error recovery patterns".
+description: Base R error handling with tryCatch, withCallingHandlers, and custom condition classes. Use when implementing error recovery, debugging conditions, or working with stop/warning/message—e.g., "tryCatch in R", "custom condition class", "handle warnings and errors", "error recovery patterns".
 ---
 
 # R Error Handling

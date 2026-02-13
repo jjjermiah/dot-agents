@@ -1,7 +1,6 @@
 ---
 name: python-pybytesize
-description: |
-  Byte size parsing and formatting with pybytesize. Use when converting bytes to human-readable sizes, parsing size strings, or doing block-aligned calculations—e.g., "format 1GB as MiB", "parse '500MB'", "human readable file size".
+description: Byte size parsing and formatting with pybytesize. Use when converting bytes to human-readable sizes, parsing size strings, or doing block-aligned calculations—e.g., "format 1GB as MiB", "parse '500MB'", "human readable file size".
 ---
 
 # Pybytesize

@@ -1,7 +1,6 @@
 ---
 name: python-production-libs
-description: |
-  Production-grade Python library selection and recommendations. Use when choosing libraries for HTTP clients, CLI frameworks, data validation, structured logging, JSON serialization, terminal output, or async patterns—e.g., "which library for HTTP", "modern alternatives to requests", "pydantic vs dataclasses", "structured logging setup".
+description: Production-grade Python library selection and recommendations. Use when choosing libraries for HTTP clients, CLI frameworks, data validation, structured logging, JSON serialization, terminal output, or async patterns—e.g., "which library for HTTP", "modern alternatives to requests", "pydantic vs dataclasses", "structured logging setup".
 ---
 
 # Python Production Libraries

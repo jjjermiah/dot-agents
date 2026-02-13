@@ -1,7 +1,6 @@
 ---
 name: python-testing
-description: |
-  Pytest-first Python testing with emphasis on fakes over mocks. Covers unit, integration, and async tests; fixture design; coverage setup; and debugging test failures. Use when writing tests, reviewing test quality, designing fixtures, setting up pytest, or debugging failures—e.g., "write unit tests for new feature", "fixture design patterns", "fakes vs mocks comparison", "fix failing tests".
+description: Pytest-first Python testing with emphasis on fakes over mocks. Covers unit, integration, and async tests; fixture design; coverage setup; and debugging test failures. Use when writing tests, reviewing test quality, designing fixtures, setting up pytest, or debugging failures—e.g., "write unit tests for new feature", "fixture design patterns", "fakes vs mocks comparison", "fix failing tests".
 ---
 
 # Python Testing Skill

@@ -1,7 +1,6 @@
 ---
 name: r-documentation
-description: |
-  R package documentation with roxygen2 and Rd files, including mathematical notation, selective Rd parsing, and structured sections. Use when writing/updating/refactoring roxygen2 documentation, adding math formulas to R help pages, programmatically reading Rd files, or troubleshooting Rd rendering
+description: R package documentation with roxygen2 and Rd files, including mathematical notation, selective Rd parsing, and structured sections. Use when writing/updating/refactoring roxygen2 documentation, adding math formulas to R help pages, programmatically reading Rd files, or troubleshooting Rd rendering
 ---
 
 # R Documentation

@@ -1,7 +1,6 @@
 ---
 name: code-reviewer
-description: |
-  Provides structured code review against plans and standards. Use when a feature is complete and needs validation, when reviewing code before merge, or when assessing quality and test coverage—e.g., "finished step X", "ready for review", "validate architecture", "check quality and tests".
+description: Provides structured code review against plans and standards. Use when a feature is complete and needs validation, when reviewing code before merge, or when assessing quality and test coverage—e.g., "finished step X", "ready for review", "validate architecture", "check quality and tests".
 ---
 
 # Code Reviewer Skill

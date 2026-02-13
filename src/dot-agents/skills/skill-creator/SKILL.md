@@ -1,7 +1,6 @@
 ---
 name: skill-creator
-description: |
-  Guides creation, validation, and packaging of AI agent skills with token-efficient design, progressive disclosure patterns, and YAML frontmatter best practices. Use when building new skills, updating existing skills, validating skill structure against standards, or packaging for distribution—e.g., "create skill", "validate SKILL.md", "package skill for sharing", "check description format".
+description: Guides creation, validation, and packaging of AI agent skills with token-efficient design, progressive disclosure patterns, and YAML frontmatter best practices. Use when building new skills, updating existing skills, validating skill structure against standards, or packaging for distribution—e.g., "create skill", "validate SKILL.md", "package skill for sharing", "check description format".
 ---
 
 # Skill Creator

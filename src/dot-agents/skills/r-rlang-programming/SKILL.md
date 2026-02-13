@@ -1,7 +1,6 @@
 ---
 name: r-rlang-programming
-description: |
-  rlang metaprogramming for tidy evaluation and non-standard evaluation (NSE) in R. Use when building data-masking APIs, wrapping dplyr/ggplot2/tidyr functions with {{ !! !!! operators, implementing quosures and dynamic dots, or designing tidyverse-style DSLs—e.g., "tidy eval wrapper function", "embrace operator usage", "NSE programming patterns", "custom select helpers".
+description: rlang metaprogramming for tidy evaluation and non-standard evaluation (NSE) in R. Use when building data-masking APIs, wrapping dplyr/ggplot2/tidyr functions with {{ !! !!! operators, implementing quosures and dynamic dots, or designing tidyverse-style DSLs—e.g., "tidy eval wrapper function", "embrace operator usage", "NSE programming patterns", "custom select helpers".
 ---
 
 # rlang Programming Skill

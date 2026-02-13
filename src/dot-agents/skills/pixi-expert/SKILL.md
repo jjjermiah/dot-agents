@@ -1,7 +1,6 @@
 ---
 name: pixi-expert
-description: |
-  Comprehensive pixi package manager skill for all pixi operations from beginner to advanced. Use for initializing projects, managing dependencies, configuring environments, multi-environment setups, workspace composition, system requirements (CUDA/glibc), task workflows, CI/CD integration, or any pixi.toml/pyproject.toml configuration—e.g., "pixi init", "pixi add numpy", "setup multi-environment project", "configure CUDA", "monorepo workspace", "pixi.lock issues", "Docker with pixi", "GitHub Actions pixi".
+description: Comprehensive pixi package manager skill for all pixi operations from beginner to advanced. Use for initializing projects, managing dependencies, configuring environments, multi-environment setups, workspace composition, system requirements (CUDA/glibc), task workflows, CI/CD integration, or any pixi.toml/pyproject.toml configuration—e.g., "pixi init", "pixi add numpy", "setup multi-environment project", "configure CUDA", "monorepo workspace", "pixi.lock issues", "Docker with pixi", "GitHub Actions pixi".
 ---
 
 # Pixi Expert

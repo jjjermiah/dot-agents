@@ -1,7 +1,6 @@
 ---
 name: r-expert
-description: |
-  Core R programming skill for all R code, package development, and data science workflows. Use when writing R functions, building packages, using tidyverse (dplyr, ggplot2, purrr), creating Shiny apps, working with R Markdown/Quarto, or doing data analysis—e.g., "write an R function", "refactor this R code", "create a Shiny dashboard", "set up package tests", "debug R errors".
+description: Core R programming skill for all R code, package development, and data science workflows. Use when writing R functions, building packages, using tidyverse (dplyr, ggplot2, purrr), creating Shiny apps, working with R Markdown/Quarto, or doing data analysis—e.g., "write an R function", "refactor this R code", "create a Shiny dashboard", "set up package tests", "debug R errors".
 ---
 
 # R Expert Skill

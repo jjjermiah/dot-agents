@@ -1,7 +1,6 @@
 ---
 name: r-benchmarking
-description: |
-  R benchmarking, profiling, and performance analysis with reproducibility and measurement rigor. Use when timing R code execution, profiling with Rprof or profvis, measuring memory allocations, comparing function performance, or optimizing bottlenecks—e.g., "benchmark R function", "profvis profiling", "microbenchmark comparison", "performance analysis", "memory profiling".
+description: R benchmarking, profiling, and performance analysis with reproducibility and measurement rigor. Use when timing R code execution, profiling with Rprof or profvis, measuring memory allocations, comparing function performance, or optimizing bottlenecks—e.g., "benchmark R function", "profvis profiling", "microbenchmark comparison", "performance analysis", "memory profiling".
 ---
 
 # R Benchmarking Skill
