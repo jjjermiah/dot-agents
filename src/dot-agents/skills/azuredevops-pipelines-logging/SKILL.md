@@ -1,7 +1,7 @@
 ---
-name: azuredevops-logging
+name: azuredevops-pipelines-logging
 description: |
-  Azure DevOps Pipelines logging-command guidance for reliable script-to-agent signaling, variable passing, and log UX. Use when writing or debugging `##vso[...]` and `##[...]` commands in YAML/Bash/PowerShell pipelines, troubleshooting output variable scope, handling secrets and masking behavior, or publishing summaries/artifacts from scripts
+  Azure DevOps Pipelines logging-command guidance for reliable script-to-agent signaling, variable passing, and log UX. Use when writing or debugging `##vso[...]` and `##[...]` commands in YAML/Bash/PowerShell pipelines, troubleshooting output variable scope, handling secrets and masking behavior, or publishing summaries/artifacts from scripts. Pair with `azuredevops-pipelines-template` when template architecture and logging semantics are both in scope.
 ---
 
 # Azure DevOps Logging
@@ -11,6 +11,23 @@ description: |
 Produce correct, debuggable Azure DevOps logging commands from scripts without
 silent parser failures. Ensure variable flow, task outcomes, and log readability
 work predictably across jobs and stages.
+
+## Scope Boundary
+
+- Own script-to-agent signaling, task-state updates, and log formatting.
+- Own command correctness, escaping, and variable handoff syntax.
+- Do not own pipeline topology, trigger strategy, or template API design.
+
+## Pairing Contract with `azuredevops-pipelines-template`
+
+Use both skills together for full pipeline quality:
+
+- `azuredevops-pipelines-template` decides compile-time structure, typed
+  template contracts, and PR-versus-main topology.
+- `azuredevops-pipelines-logging` implements script-level state signaling:
+  `task.setvariable`, `task.logissue`, `task.complete`, summaries, and tags.
+- Keep boundary explicit: template skill chooses *where* data should flow;
+  logging skill chooses *how* command lines implement that flow safely.
 
 ## Core Rules
 
@@ -125,6 +142,8 @@ When this skill is used, respond with:
 2. Copy/paste-ready Bash or PowerShell snippet.
 3. Correct variable reference syntax for same job/future job/stage (if relevant).
 4. Verification checklist (where to confirm success in logs/UI).
+5. Explicit note when template-level changes should be delegated to
+   `azuredevops-pipelines-template`.
 
 ## References (Load on Demand)
 
