@@ -55,20 +55,22 @@ START
 |
 |-- Q1: Do you need a context window > 400k tokens?
 |       |
-|       +-- YES -> Claude long-context path (1M beta window requires the
-|       |         `context-1m-2025-08-07` header when available; some
-|       |         enterprise tiers can stretch to ~500k).
+|       +-- YES -> Claude long-context path
 |       |         |
-|       |         |-- Q1a: Do you want deepest reasoning even if latency is
-|       |         |        higher and pricing is a premium tier?
+|       |         |-- Q1a: Are you eligible to use Claude 4.x 1M beta context
+|       |         |        (requires `context-1m-2025-08-07` header)?
 |       |         |        |
-|       |         |        +-- YES -> `anthropic/claude-opus-4-6`
+|       |         |        +-- YES -> Q1b
 |       |         |        |
-|       |         |        +-- NO  -> Q1b
+|       |         |        +-- NO  -> No single-call option to exceed 400k here
+|       |         |                 without 1M beta eligibility.
+|       |         |                 Fallback: reduce to <=400k and use GPT-5 path,
+|       |         |                 or split/chunk/summarize across calls.
 |       |         |
-|       |         |-- Q1b: Is throughput/latency the main priority?
+|       |         |-- Q1b: Do you want max reasoning (expect higher latency;
+|       |         |        pricing not published in the docs we indexed)?
 |       |                  |
-|       |                  +-- YES -> `anthropic/claude-haiku-4-5`
+|       |                  +-- YES -> `anthropic/claude-opus-4-6`
 |       |                  |
 |       |                  +-- NO  -> `anthropic/claude-sonnet-4-5`
 |       |
