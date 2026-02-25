@@ -3,7 +3,7 @@
   "instructions": ["references/common-rules.md"],
   // === Models ===
   "model": "opencode/kimi-k2.5",
-  "small_model": "opencode/claude-3-5-haiku", // title gen, lightweight tasks
+  "small_model": "opencode/claude-4-5-haiku", // title gen, lightweight tasks
   "autoupdate": true,
   // === TUI ===
   "tui": {
@@ -51,6 +51,10 @@
     "context7": {
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}",
+      },
+      "enabled": true,
     },
     // Web fetching - MCP official server (Python via uvx)
     "fetch": {
