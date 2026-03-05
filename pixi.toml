@@ -3,7 +3,7 @@ authors = ["Jermiah Joseph <jermiahjoseph98@gmail.com>"]
 channels = ["conda-forge"]
 name = "dot-agents"
 platforms = ["osx-arm64", "linux-64"]
-version = "0.1.0"  # x-release-please-version
+version = "0.2.0"  # x-release-please-version
 
 
 [environments]
